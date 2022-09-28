@@ -1,8 +1,8 @@
+import SimpleSlider from "./components/SimpleSlider";
+
 function App() {
   return (
-    <div className="App">
-      App
-    </div>
+      <SimpleSlider />
   );
 }
 
