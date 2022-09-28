@@ -8,20 +8,31 @@ import MovieCard from '../MovieCard';
 import data from '../../mock.json';
 
 const SimpleSlider = () => {
+  const Arrow = ({ className, style, onClick }) => {
+    return (
+      <Box
+        className={className}
+        style={{ ...style, display: 'block', background: '#111' }}
+        onClick={onClick}
+      />
+    );
+  };
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 800,
     slidesToShow: 5,
     slidesToScroll: 5,
+    swipeToSlide: true,
+    prevArrow: <Arrow />,
+    nextArrow: <Arrow />,
     responsive: [
       {
         breakpoint: 1200,
         settings: {
           slidesToShow: 4,
           slidesToScroll: 4,
-          infinite: true,
-          dots: true,
         },
       },
       {
@@ -34,6 +45,7 @@ const SimpleSlider = () => {
       {
         breakpoint: 680,
         settings: {
+          dots: false,
           slidesToShow: 2,
           slidesToScroll: 2,
         },
@@ -41,6 +53,7 @@ const SimpleSlider = () => {
       {
         breakpoint: 460,
         settings: {
+          dots: false,
           slidesToShow: 1,
           slidesToScroll: 1,
         },
@@ -49,7 +62,7 @@ const SimpleSlider = () => {
   };
 
   return (
-    <Box pt={5}>
+    <Box p={5}>
       <Slider {...settings}>
         {data.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
